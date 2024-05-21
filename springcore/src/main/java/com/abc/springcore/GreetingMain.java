@@ -13,8 +13,17 @@ public class GreetingMain {
 
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("appcontext.xml");
 
-		Greeting greeting = (Greeting) context.getBean("helloBean");
-		greeting.sayHello();
-
+		Greeting greeting1 = (Greeting) context.getBean("helloBean");
+		
+		Greeting greeting2 = (Greeting) context.getBean("helloBean");
+		
+		if(greeting1 == greeting2) {
+			System.out.println("both refer to same object");
+		}
+		else {
+			System.out.println("both refer to different object");
+		}
+				
+		greeting1.sayHello();
 	}
 }

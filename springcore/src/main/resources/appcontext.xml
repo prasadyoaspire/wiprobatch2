@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="helloBean" class="com.abc.springcore.bean.Greeting">
+	<bean id="helloBean" class="com.abc.springcore.bean.Greeting" scope="prototype">
 		<property name="message" value="How are you doing?"/>
 	</bean>
 	
