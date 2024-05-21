@@ -15,11 +15,11 @@ public class CustomerMain {
 	public static void main(String[] args) {
 		
 		Customer customer = new Customer();
-		customer.setCustomerId(5555);
-		customer.setCustomerName("Naradh");
-		customer.setEmail("naradh@tmail.com");
-		customer.setAge(26);
-		customer.setCity("Pune");
+		customer.setCustomerId(6666);
+		customer.setCustomerName("Nidhi");
+		customer.setEmail("nidhi@tmail.com");
+		customer.setAge(28);
+		customer.setCity("Delhi");
 
 		// Create registry
 		StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
@@ -37,15 +37,14 @@ public class CustomerMain {
         
         Transaction txn = session.beginTransaction();
         
-        session.persist(customer);
+        session.persist(customer);       
         
         txn.commit();
         
         System.out.println("New Customer Saved");
         
         session.close();
-        sessionFactory.close();
-		
+        sessionFactory.close();		
 	}
 
 }
