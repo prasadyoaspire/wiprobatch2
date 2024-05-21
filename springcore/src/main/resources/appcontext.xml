@@ -8,4 +8,30 @@
 		<property name="message" value="How are you doing?"/>
 	</bean>
 	
+	<bean id="circle1" class ="com.abc.springcore.bean.Circle">
+		<property name="radius" value="3"/>
+	</bean>
+	
+	<bean id="triangle1" class ="com.abc.springcore.bean.Triangle">
+		<property name="base" value="3"/>
+		<property name="height" value="5"/>
+	</bean>
+	
+	<bean id="shapeService" class ="com.abc.springcore.service.ShapeService">
+		<property name="shape" ref="circle1"/>
+	</bean>
+	
+	<bean id="emp1" class="com.abc.springcore.bean.Employee">
+		<property name="empId" value="1001"/>
+		<property name="name" value="Divya"/>
+		<property name="skills">
+		 <list>
+		 	<value>Core Java</value>
+		 	<value>Hibernate</value>
+		 	<value>Spring</value>
+		 	<value>React</value>
+		 </list>		
+		</property>
+	</bean>
+		
 </beans>
