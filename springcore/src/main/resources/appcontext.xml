@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-		https://www.springframework.org/schema/beans/spring-beans.xsd">
+		https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd">		
+		
+	<!-- To enable annotations -->
+	 <context:annotation-config/>
 
 	<bean id="helloBean" class="com.abc.springcore.bean.Greeting" scope="prototype">
 		<property name="message" value="How are you doing?"/>
 	</bean>
 	
-	<bean id="circle1" class ="com.abc.springcore.bean.Circle">
+    <bean id="circle1" class ="com.abc.springcore.bean.Circle">
 		<property name="radius" value="3"/>
 	</bean>
 	
@@ -17,8 +23,8 @@
 		<property name="height" value="5"/>
 	</bean>
 	
-	<bean id="shapeService" class ="com.abc.springcore.service.ShapeService">
-		<property name="shape" ref="circle1"/>
+	<bean id="shapeService" class ="com.abc.springcore.service.ShapeService" >
+		<!-- <property name="shape" ref="circle1"/> -->
 	</bean>
 	
 	<bean id="emp1" class="com.abc.springcore.bean.Employee">
