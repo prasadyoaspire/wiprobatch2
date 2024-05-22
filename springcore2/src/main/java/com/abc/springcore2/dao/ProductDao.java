@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Repository;
+
 import com.abc.springcore2.dto.Product;
 
+@Repository
 public class ProductDao {
 
 	private List<Product> products ;
