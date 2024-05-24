@@ -58,4 +58,10 @@ public class CustomerServiceImpl implements CustomerService {
 		customerRepository.delete(customer);
 	}
 
+	@Override
+	public List<Customer> findCustomerByCity(String city) {	
+		List<Customer> customers = customerRepository.findByCity(city);
+		return customers;
+	}
+
 }
