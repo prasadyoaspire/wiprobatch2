@@ -37,4 +37,25 @@ public class CustomerServiceImpl implements CustomerService {
 		return customers;
 	}
 
+	@Override
+	public Customer updateCustomer(Customer customer) {		
+		Optional<Customer> optionalCustomer = customerRepository.findById(customer.getCustomerId());
+		if(optionalCustomer.isEmpty()) {
+			// throw some exception 
+		}		
+		customerRepository.save(customer);		
+		return customer;
+	}
+
+	@Override
+	public void deleteCustomer(int customerId) {
+		Optional<Customer> optionalCustomer = customerRepository.findById(customerId);
+		if(optionalCustomer.isEmpty()) {
+			// throw some exception 
+		}
+		
+		Customer customer = optionalCustomer.get();
+		customerRepository.delete(customer);
+	}
+
 }

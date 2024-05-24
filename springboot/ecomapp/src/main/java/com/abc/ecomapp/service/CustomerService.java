@@ -11,4 +11,8 @@ public interface CustomerService {
 	Customer findCustomerById(int customerId);
 	
 	List<Customer> findAllCusotmers();
+	
+	Customer updateCustomer(Customer customer);
+	
+	void deleteCustomer(int customerId);
 }
