@@ -64,4 +64,10 @@ public class CustomerServiceImpl implements CustomerService {
 		return customers;
 	}
 
+	@Override
+	public List<Customer> findCustomersByAboveAge(int age) {
+	
+		return customerRepository.findCustomersAboveAge(age);
+	}
+
 }

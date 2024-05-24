@@ -66,10 +66,18 @@ public class CustomerController {
 	}	
 	
 	
-	@GetMapping("/filter")
+	@GetMapping("/filterbycity")
 	public List<Customer> fetchCustomerDetailsByCity( @RequestParam("city") String city) {
 		
 		List<Customer> customers = customerService.findCustomerByCity(city);		
+		
+		return customers;
+	}
+	
+	@GetMapping("/filterbyage")
+	public List<Customer> fetchCustomerAboveAge( @RequestParam("age") int age) {
+		
+		List<Customer> customers = customerService.findCustomersByAboveAge(age);		
 		
 		return customers;
 	}

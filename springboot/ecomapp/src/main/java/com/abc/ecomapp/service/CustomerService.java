@@ -18,5 +18,7 @@ public interface CustomerService {
 	
 	List<Customer> findCustomerByCity(String city);
 	
+	List<Customer> findCustomersByAboveAge(int age);
+	
 	
 }
