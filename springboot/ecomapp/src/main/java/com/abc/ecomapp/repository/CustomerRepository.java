@@ -6,4 +6,5 @@ import com.abc.ecomapp.entity.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer,Integer> {
 
+	
 }
