@@ -39,4 +39,6 @@ public class ProductController {
 		List<Product> products = productService.findAllProducts();	
 		return products;
 	}
+	
+	
 }
