@@ -25,7 +25,7 @@ public class OrderItem {
 	@Column(name="order_item_id")
 	private int orderItemId;
 	
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="product_id")
    	private Product product;
 	
