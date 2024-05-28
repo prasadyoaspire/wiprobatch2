@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.abc.ecomwebflux.entity.Product;
+import com.abc.ecomwebflux.exception.ResourceNotFoundException;
 import com.abc.ecomwebflux.repository.ProductRepository;
 
 import reactor.core.publisher.Flux;
@@ -24,7 +25,8 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Mono<Product> findProductById(int productId) {
 		
-		return productRepository.findById(productId);
+		return productRepository.findById(productId)
+				.switchIfEmpty(Mono.error(new ResourceNotFoundException("Product Not found with id: "+productId)));
 	}
 
 	@Override
