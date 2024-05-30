@@ -14,6 +14,6 @@ public class Order {
 	private double orderAmount;
 	private LocalDate orderDate;	
 	private String orderStauts;
-	private int customerId;
+	private Customer customer;
 	private List<OrderItem> orderItems;
 }

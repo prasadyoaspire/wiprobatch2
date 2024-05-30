@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.abc.orderservice.entity.OrderEntity;
+import com.abc.orderservice.model.Order;
 import com.abc.orderservice.service.OrderService;
 
 
@@ -30,8 +31,8 @@ public class OrderController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<OrderEntity> fetchOrderDetails(@PathVariable("id") int orderId) {
-		OrderEntity order = orderService.findOrderById(orderId);
+	public ResponseEntity<Order> fetchOrderDetails(@PathVariable("id") int orderId) {
+		Order order = orderService.findOrderById(orderId);
 		return new ResponseEntity<>(order,HttpStatus.OK);
 	}
 	
