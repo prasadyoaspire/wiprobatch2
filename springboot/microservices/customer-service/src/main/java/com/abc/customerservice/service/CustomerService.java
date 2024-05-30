@@ -2,7 +2,7 @@ package com.abc.customerservice.service;
 
 import java.util.List;
 
-import com.abc.customerservice.entity.Customer;
+import com.abc.customerservice.model.Customer;
 
 
 public interface CustomerService {

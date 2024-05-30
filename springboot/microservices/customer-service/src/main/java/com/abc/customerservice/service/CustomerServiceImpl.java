@@ -6,8 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.abc.customerservice.entity.Customer;
+import com.abc.customerservice.entity.CustomerEntity;
+import com.abc.customerservice.model.Customer;
 import com.abc.customerservice.repository.CustomerRepository;
+import com.abc.customerservice.util.CustomerMapper;
 
 
 @Service
@@ -17,58 +19,66 @@ public class CustomerServiceImpl implements CustomerService {
 	private CustomerRepository customerRepository;
 
 	@Override
-	public Customer saveCustomer(Customer customer) {		
-		customerRepository.save(customer);		
-		return customer;
+	public Customer saveCustomer(Customer customer) {
+		
+		CustomerEntity customerEntity = CustomerMapper.mapToEntity(customer);
+		customerRepository.save(customerEntity);			
+		Customer customer2 = CustomerMapper.mapToModel(customerEntity);
+		return customer2;
 	}
 
 	@Override
 	public Customer findCustomerById(int customerId) {		
-		Optional<Customer> optionalCustomer = customerRepository.findById(customerId);
+		Optional<CustomerEntity> optionalCustomer = customerRepository.findById(customerId);
 		if(optionalCustomer.isEmpty()) {
 			
 		}		
-		Customer customer = optionalCustomer.get();		
-		return customer;
+		CustomerEntity customerEntity = optionalCustomer.get();	
+		
+		return CustomerMapper.mapToModel(customerEntity);
 	}
 
 	@Override
 	public List<Customer> findAllCusotmers() {		
-		List<Customer> customers = customerRepository.findAll();
-		return customers;
+		List<CustomerEntity> customers = customerRepository.findAll();
+		return CustomerMapper.mapToModelList(customers);
 	}
 
 	@Override
 	public Customer updateCustomer(Customer customer) {		
-		Optional<Customer> optionalCustomer = customerRepository.findById(customer.getCustomerId());
+		Optional<CustomerEntity> optionalCustomer = customerRepository.findById(customer.getCustomerId());
 		if(optionalCustomer.isEmpty()) {
 			// throw some exception 
 		}		
-		customerRepository.save(customer);		
-		return customer;
+		
+		CustomerEntity customerEntity = CustomerMapper.mapToEntity(customer);		
+		customerRepository.save(customerEntity);			
+		Customer customer2 = CustomerMapper.mapToModel(customerEntity);
+		
+		return customer2;
 	}
 
 	@Override
 	public void deleteCustomer(int customerId) {
-		Optional<Customer> optionalCustomer = customerRepository.findById(customerId);
+		Optional<CustomerEntity> optionalCustomer = customerRepository.findById(customerId);
 		if(optionalCustomer.isEmpty()) {
 			// throw some exception 
 		}
 		
-		Customer customer = optionalCustomer.get();
-		customerRepository.delete(customer);
+		CustomerEntity customerEntity = optionalCustomer.get();
+		customerRepository.delete(customerEntity);
 	}
 
 	@Override
 	public List<Customer> findCustomerByCity(String city) {	
-		List<Customer> customers = customerRepository.findByCity(city);
-		return customers;
+		List<CustomerEntity> customers = customerRepository.findByCity(city);
+		return CustomerMapper.mapToModelList(customers);
 	}
 
 	@Override
-	public List<Customer> findCustomersByAboveAge(int age) {
-	
-		return customerRepository.findCustomersAboveAge(age);
+	public List<Customer> findCustomersByAboveAge(int age) {	
+		List<CustomerEntity> customers = customerRepository.findCustomersAboveAge(age);
+		return CustomerMapper.mapToModelList(customers);
 	}
 
 }
