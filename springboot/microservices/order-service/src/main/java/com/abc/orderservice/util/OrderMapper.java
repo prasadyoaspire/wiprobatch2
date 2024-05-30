@@ -15,6 +15,7 @@ public class OrderMapper {
 		OrderEntity orderEntity = new OrderEntity();
 		orderEntity.setOrderId(order.getOrderId());
 		orderEntity.setOrderAmount(order.getOrderAmount());
+		orderEntity.setCustomerId(order.getCustomerId());
 		orderEntity.setOrderDate(order.getOrderDate());
 		orderEntity.setOrderStauts(order.getOrderStauts());
 		
@@ -29,6 +30,7 @@ public class OrderMapper {
 		Order order = new Order();
 		order.setOrderId(orderEntity.getOrderId());
 		order.setOrderAmount(orderEntity.getOrderAmount());
+		order.setCustomerId(orderEntity.getCustomerId());
 		order.setOrderDate(orderEntity.getOrderDate());
 		order.setOrderStauts(orderEntity.getOrderStauts());
 		

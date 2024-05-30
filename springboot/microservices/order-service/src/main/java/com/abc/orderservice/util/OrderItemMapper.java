@@ -30,6 +30,7 @@ public class OrderItemMapper {
 		List<OrderItemEntity> orderItemEntityList = new ArrayList<>();
 		for(OrderItem orderItem : orderItemList) {
 			OrderItemEntity orderItemEntity = mapToEntity(orderItem);
+				
 			orderItemEntityList.add(orderItemEntity);
 		}		
 		return orderItemEntityList;
