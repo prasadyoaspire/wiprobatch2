@@ -2,8 +2,7 @@ package com.abc.productservice.service;
 
 import java.util.List;
 
-import com.abc.productservice.entity.Product;
-
+import com.abc.productservice.model.Product;
 
 public interface ProductService {
 

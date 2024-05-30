@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.abc.productservice.entity.Product;
+import com.abc.productservice.model.Product;
 import com.abc.productservice.service.ProductService;
 
 @RestController
