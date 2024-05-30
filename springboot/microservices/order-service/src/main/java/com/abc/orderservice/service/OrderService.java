@@ -2,14 +2,13 @@ package com.abc.orderservice.service;
 
 import java.util.List;
 
-import com.abc.orderservice.model.Order;
-
+import com.abc.orderservice.entity.OrderEntity;
 
 public interface OrderService {
 
-	Order saveOrder(Order order);
+	OrderEntity saveOrder(OrderEntity orderEntity);
 	
-	Order findOrderById(int orderId);
+	OrderEntity findOrderById(int orderId);
 	
-	List<Order> findAllOrders();
+	List<OrderEntity> findAllOrders();
 }

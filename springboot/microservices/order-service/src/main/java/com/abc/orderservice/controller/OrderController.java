@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.abc.orderservice.model.Order;
+import com.abc.orderservice.entity.OrderEntity;
 import com.abc.orderservice.service.OrderService;
 
 
@@ -24,19 +24,19 @@ public class OrderController {
 	private OrderService orderService;
 	
 	@PostMapping("/save")
-	public ResponseEntity<Order> placeOrder(@RequestBody Order order) {		
-		Order newOrder = orderService.saveOrder(order);
+	public ResponseEntity<OrderEntity> placeOrder(@RequestBody OrderEntity orderEntity) {		
+		OrderEntity newOrder = orderService.saveOrder(orderEntity);
 		return new ResponseEntity<>(newOrder,HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Order> fetchOrderDetails(@PathVariable("id") int orderId) {
-		Order order = orderService.findOrderById(orderId);
+	public ResponseEntity<OrderEntity> fetchOrderDetails(@PathVariable("id") int orderId) {
+		OrderEntity order = orderService.findOrderById(orderId);
 		return new ResponseEntity<>(order,HttpStatus.OK);
 	}
 	
 	@GetMapping("/all")
-	public List<Order> fetchAllOrders() {		
+	public List<OrderEntity> fetchAllOrders() {		
 		return orderService.findAllOrders();
 	}
 }

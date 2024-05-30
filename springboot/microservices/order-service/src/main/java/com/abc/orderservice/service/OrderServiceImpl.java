@@ -27,15 +27,14 @@ public class OrderServiceImpl implements OrderService {
 	private RestTemplate restTemplate;
 
 	@Override
-	public Order saveOrder(Order order) {
+	public OrderEntity saveOrder(OrderEntity orderEntity) {
 
 		// each item total
-
-		List<OrderItem> orderItems = order.getOrderItems();
+		List<OrderItemEntity> orderItems = orderEntity.getOrderItems();
 		
 		double orderTotal = 0;
 
-		for (OrderItem item : orderItems) {
+		for (OrderItemEntity item : orderItems) {
 
 			// we need to call Product-service getProductById() method and store it in
 			// product object
@@ -47,43 +46,36 @@ public class OrderServiceImpl implements OrderService {
 			double itemTotal = item.getQuantity()*product.getProductPrice();
 			item.setItemTotal(itemTotal);
 			
-			orderTotal = orderTotal+itemTotal;	
-		
+			orderTotal = orderTotal+itemTotal;
+			
+			item.setOrder(orderEntity);
 		}
 
-		// total order amount
-		order.setOrderAmount(orderTotal);
-		order.setOrderStauts("New");
-		order.setOrderDate(LocalDate.now());
+		//set total order amount
+		orderEntity.setOrderAmount(orderTotal);
+		orderEntity.setOrderStauts("New");
+		orderEntity.setOrderDate(LocalDate.now());	
+		
+		orderRepository.save(orderEntity);	
 
-		OrderEntity orderEntity = OrderMapper.mapToEntity(order);
-		List<OrderItemEntity> orderItemEntityList = orderEntity.getOrderItems();
-		orderItemEntityList.forEach(item-> item.setOrder(orderEntity));
-		orderRepository.save(orderEntity);
-		Order newOrder = OrderMapper.mapToModel(orderEntity);
-
-		return newOrder;
+		return orderEntity;
 	}
 
 	@Override
-	public Order findOrderById(int orderId) {
+	public OrderEntity findOrderById(int orderId) {
 
 		Optional<OrderEntity> optionalOrderEntity = orderRepository.findById(orderId);
 		if (optionalOrderEntity.isEmpty()) {
 
 		}
 		OrderEntity orderEntity = optionalOrderEntity.get();
-
-		Order order = OrderMapper.mapToModel(orderEntity);
-
-		return order;
+		return orderEntity;
 	}
 
 	@Override
-	public List<Order> findAllOrders() {
-		List<OrderEntity> orderEntityList = orderRepository.findAll();
-		List<Order> orderList = OrderMapper.mapToModelList(orderEntityList);
-		return orderList;
+	public List<OrderEntity> findAllOrders() {
+		List<OrderEntity> orderEntityList = orderRepository.findAll();	
+		return orderEntityList;
 	}
 
 }
