@@ -25,8 +25,15 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private OrderRepository orderRepository;
 
+//	@Autowired
+//	private RestTemplate restTemplate;
+	
 	@Autowired
-	private RestTemplate restTemplate;
+	private ProductApiClient productApiClient;
+	
+	@Autowired
+	private CustomerApiClient customerApiClient;
+		
 
 	@Override
 	public OrderEntity saveOrder(OrderEntity orderEntity) {
@@ -39,9 +46,13 @@ public class OrderServiceImpl implements OrderService {
 
 			// we need to call Product-service getProductById() method to get the product details
 			
-			ResponseEntity<Product> responseEntity = restTemplate
-					.getForEntity("http://localhost:8081/product/" + item.getProductId(), Product.class);
-			Product product = responseEntity.getBody();
+			//using RestTemplate			
+//			ResponseEntity<Product> responseEntity = restTemplate
+//					.getForEntity("http://localhost:8081/product/" + item.getProductId(), Product.class);
+//			Product product = responseEntity.getBody();
+			
+			// using Feign client			
+			Product product = productApiClient.getProductDetials(item.getProductId());
 			
 			double itemTotal = item.getQuantity()*product.getProductPrice();
 			item.setItemTotal(itemTotal);
@@ -70,9 +81,14 @@ public class OrderServiceImpl implements OrderService {
 		}
 		OrderEntity orderEntity = optionalOrderEntity.get();
 		
-		ResponseEntity<Customer> responseEntity = restTemplate
-				.getForEntity("http://localhost:8082/customer/get/" + orderEntity.getCustomerId(), Customer.class);
-		Customer customer = responseEntity.getBody();
+		//using RestTemplate
+//		ResponseEntity<Customer> responseEntity = restTemplate
+//				.getForEntity("http://localhost:8082/customer/get/" + orderEntity.getCustomerId(), Customer.class);
+//		Customer customer = responseEntity.getBody();
+		
+		//using Feign client
+		Customer customer = customerApiClient.getCustomerDetails(orderEntity.getCustomerId());
+		
 		
 		Order order = new Order();
 		order.setOrderId(orderEntity.getOrderId());
@@ -91,9 +107,11 @@ public class OrderServiceImpl implements OrderService {
 			orderItem.setQuantity(orderItemEntity.getQuantity());
 			orderItem.setItemTotal(orderItemEntity.getItemTotal());
 			
-			ResponseEntity<Product> productResponseEntity = restTemplate
-					.getForEntity("http://localhost:8081/product/" +orderItemEntity.getProductId(), Product.class);
-			Product product = productResponseEntity.getBody();
+//			ResponseEntity<Product> productResponseEntity = restTemplate
+//					.getForEntity("http://localhost:8081/product/" +orderItemEntity.getProductId(), Product.class);
+//			Product product = productResponseEntity.getBody();
+			
+			Product product = productApiClient.getProductDetials(orderItemEntity.getProductId());
 			
 			orderItem.setProduct(product);
 			
