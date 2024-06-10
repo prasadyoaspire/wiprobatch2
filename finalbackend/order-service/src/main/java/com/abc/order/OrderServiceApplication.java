@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
-import com.abc.order.exception.CustomErrorDecoder;
+import com.abc.order.exception.ProductErrorDecoder;
 
 import feign.codec.ErrorDecoder;
 
@@ -17,9 +17,9 @@ public class OrderServiceApplication {
 		SpringApplication.run(OrderServiceApplication.class, args);
 	}
 	
-	@Bean
-	public ErrorDecoder getErroDecoderBean() {
-		return new CustomErrorDecoder();
-	}
+//	@Bean
+//	public ErrorDecoder getErroDecoderBean() {
+//		return new ProductErrorDecoder();
+//	}
 
 }

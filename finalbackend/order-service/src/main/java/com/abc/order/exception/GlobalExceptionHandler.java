@@ -22,8 +22,8 @@ public class GlobalExceptionHandler {
 		return responseEntity;
 	}	
 	
-	@ExceptionHandler(ProductServiceNotAvailableException.class)
-	public ResponseEntity<ErrorResponse>  handleProductServiceNotAvailableException(Exception ex) {	
+	@ExceptionHandler(ServiceNotAvailableException.class)
+	public ResponseEntity<ErrorResponse>  handleServiceNotAvailableException(Exception ex) {	
 		
 		ErrorResponse errorResponse = new ErrorResponse();
 		errorResponse.setTimestamp(LocalDateTime.now().toString());
