@@ -38,7 +38,5 @@ public class EmailServiceImpl implements EmailService {
 		} catch (MailException exception) {
 			LOGGER.debug("Failure occurred while sending email");
 		}
-	}
-	
-	
+	}	
 }

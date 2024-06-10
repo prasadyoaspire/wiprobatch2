@@ -28,6 +28,9 @@ public class OrderServiceImpl implements OrderService {
 	
 	@Autowired
 	private CustomerApiClient customerApiClient;
+	
+	@Autowired
+	private KafkaProducer kafkaProducer;
 
 	@Override	
 	public OrderEntity saveOrder(OrderEntity orderEntity) {
@@ -53,6 +56,8 @@ public class OrderServiceImpl implements OrderService {
 		orderEntity.setOrderDate(LocalDate.now());	
 		
 		orderRepository.save(orderEntity);	
+		
+		kafkaProducer.sendMessage("Order Successfully Placed!");
 
 		return orderEntity;
 	}
