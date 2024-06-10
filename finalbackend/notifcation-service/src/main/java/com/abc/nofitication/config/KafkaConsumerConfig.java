@@ -12,6 +12,8 @@ import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 
+import com.abc.nofitication.model.OrderDetails;
+
 @Configuration
 public class KafkaConsumerConfig {
 
@@ -32,24 +34,24 @@ public class KafkaConsumerConfig {
 		return factory;
 	}
 
-//	@Bean
-//	ConsumerFactory<String, Customer> customerConsumerFactory() {
-//		JsonDeserializer<Customer> jsonDeserializer=new JsonDeserializer<>(Customer.class,false);
-//		jsonDeserializer.addTrustedPackages("*");
-//		Map<String, Object> configProps = new HashMap<>();
-//		configProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-//		configProps.put(ConsumerConfig.GROUP_ID_CONFIG, "group-id");		
-//		return new DefaultKafkaConsumerFactory<>(
-//				configProps, 
-//				new StringDeserializer(),
-//				jsonDeserializer);
-//	}
-//
-//	@Bean
-//	ConcurrentKafkaListenerContainerFactory<String, Customer> customerKafkaListenerContainerFactory() {
-//
-//		ConcurrentKafkaListenerContainerFactory<String, Customer> factory = new ConcurrentKafkaListenerContainerFactory<>();
-//		factory.setConsumerFactory(customerConsumerFactory());
-//		return factory;
-//	}
+	@Bean
+	ConsumerFactory<String, OrderDetails> orderDetailsConsumerFactory() {
+		JsonDeserializer<OrderDetails> jsonDeserializer=new JsonDeserializer<>(OrderDetails.class,false);
+		jsonDeserializer.addTrustedPackages("*");
+		Map<String, Object> configProps = new HashMap<>();
+		configProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+		configProps.put(ConsumerConfig.GROUP_ID_CONFIG, "ecom-group-id");		
+		return new DefaultKafkaConsumerFactory<>(
+				configProps, 
+				new StringDeserializer(),
+				jsonDeserializer);
+	}
+
+	@Bean
+	ConcurrentKafkaListenerContainerFactory<String, OrderDetails> orderDetailsKafkaListenerContainerFactory() {
+
+		ConcurrentKafkaListenerContainerFactory<String, OrderDetails> factory = new ConcurrentKafkaListenerContainerFactory<>();
+		factory.setConsumerFactory(orderDetailsConsumerFactory());
+		return factory;
+	}
 }

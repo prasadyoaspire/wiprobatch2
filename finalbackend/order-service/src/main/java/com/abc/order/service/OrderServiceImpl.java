@@ -13,6 +13,7 @@ import com.abc.order.entity.OrderItemEntity;
 import com.abc.order.exception.ResourceNotFoundException;
 import com.abc.order.model.Customer;
 import com.abc.order.model.Order;
+import com.abc.order.model.OrderDetails;
 import com.abc.order.model.OrderItem;
 import com.abc.order.model.Product;
 import com.abc.order.repository.OrderRepository;
@@ -57,7 +58,18 @@ public class OrderServiceImpl implements OrderService {
 		
 		orderRepository.save(orderEntity);	
 		
-		kafkaProducer.sendMessage("Order Successfully Placed!");
+		Customer customer = customerApiClient.getCustomerDetails(orderEntity.getCustomerId());
+		
+		OrderDetails orderDetails = new OrderDetails();
+		orderDetails.setOrderAmount(orderEntity.getOrderAmount());
+		orderDetails.setOrderStauts(orderEntity.getOrderStauts());
+		orderDetails.setOrderDate(orderEntity.getOrderDate());
+		orderDetails.setItemCount(orderEntity.getOrderItems().size());
+		orderDetails.setCustomerName(customer.getCustomerName());
+		orderDetails.setEmail(customer.getEmail());
+		orderDetails.setMobile(customer.getMobile());
+		
+		kafkaProducer.sendMessage(orderDetails);
 
 		return orderEntity;
 	}

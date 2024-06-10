@@ -7,6 +7,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 import com.abc.nofitication.model.EmailDetails;
+import com.abc.nofitication.model.OrderDetails;
 
 @Service
 public class KafkaConsumer {
@@ -16,16 +17,16 @@ public class KafkaConsumer {
 	@Autowired
 	private EmailService emailService;
 
-    @KafkaListener(topics = "ecom-topic",
-                    groupId = "ecom-group-id")
-    public void consume(String message){
-    	
-    	LOGGER.info(message);
+    @KafkaListener(topics = "ecom-topic",containerFactory = "orderDetailsKafkaListenerContainerFactory")
+    public void consume(OrderDetails orderDetails){ 	
+    
+    	String msg = "Thank you "+orderDetails.getCustomerName()+"\nOrder Details\n"+"Order Amount: "+orderDetails.getOrderAmount()+"\n"+
+    	"Order Status:"+orderDetails.getOrderStauts();
     	
     	EmailDetails emailDetails = new EmailDetails();
-    	emailDetails.setRecipient("sanskarchourasia1275@gmail.com");
-    	emailDetails.setBody(message);
-    	emailDetails.setSubject("Order");
+    	emailDetails.setRecipient(orderDetails.getEmail());
+    	emailDetails.setBody(msg);
+    	emailDetails.setSubject("Order Placed");
     	
     	emailService.sendEmail(emailDetails);
     	

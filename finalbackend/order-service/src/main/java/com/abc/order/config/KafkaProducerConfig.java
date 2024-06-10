@@ -12,6 +12,8 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
+import com.abc.order.model.OrderDetails;
+
 @Configuration
 public class KafkaProducerConfig {
 
@@ -30,18 +32,18 @@ public class KafkaProducerConfig {
 	}
 	
 
-//	@Bean
-//	public ProducerFactory<String, Customer> customerProducerFactory() {
-//		Map<String, Object> configProps = new HashMap<>();
-//		configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-//		configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
-//	    configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,JsonSerializer.class);
-//	    return new DefaultKafkaProducerFactory<>(configProps);
-//	}
-//
-//	@Bean
-//	public KafkaTemplate<String, Customer> customerKafkaTemplate() {
-//	    return new KafkaTemplate<>(customerProducerFactory());
-//	}
+	@Bean
+	public ProducerFactory<String, OrderDetails> orderDetailsProducerFactory() {
+		Map<String, Object> configProps = new HashMap<>();
+		configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+		configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+	    configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,JsonSerializer.class);
+	    return new DefaultKafkaProducerFactory<>(configProps);
+	}
+
+	@Bean
+	public KafkaTemplate<String, OrderDetails> orderDetailsKafkaTemplate() {
+	    return new KafkaTemplate<>(orderDetailsProducerFactory());
+	}
 	
 }
