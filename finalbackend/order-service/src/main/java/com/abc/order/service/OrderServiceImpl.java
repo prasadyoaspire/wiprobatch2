@@ -37,6 +37,7 @@ public class OrderServiceImpl implements OrderService {
 
 		for (OrderItemEntity item : orderItems) {
 			// using Feign client			
+			
 			Product product = productApiClient.getProductDetials(item.getProductId());
 			
 			double itemTotal = item.getQuantity()*product.getProductPrice();
