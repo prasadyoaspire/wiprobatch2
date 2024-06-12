@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <title>Registration</title>
+ </head>
+ <body>
+
+    <h1>Registration</h1>
+
+    <form>
+        <div>
+            <label>FirstName</label>
+            <input type="text" name="fname" id="fname"/>
+        </div>
+        <div>
+            <label>LastName</label>
+            <input type="text" name="lname" id="lname"/>
+        </div>
+        <div>
+            <label>Gender</label>
+            <input type="radio" name="gender" id="gender" value="male"/>Male
+            <input type="radio" name="gender" id="gender" value="female"/>Female
+        </div>
+        <div>
+            <label>DOB</label>
+            <input type="date" name="dob" id="dob"/>         
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="email" name="email" id="email"/>         
+        </div>
+        <div>
+            <label>Mobile</label>
+            <input type="number" name="mobile" id="mobile"/>         
+        </div>
+        <div>
+            <label>Country</label>
+            <select name="country" id="country">
+                <option value="#">--Select--</option>
+                <option value="India">INDIA</option>
+                <option value="Russia">RUSSIA</option>
+                <option value="Germany">GERMANY</option>
+            </select>         
+        </div>
+        <div>
+            <label>Skills</label>
+            <input type="checkbox" name="skills" id="skills" value="corejava">Core Java
+            <input type="checkbox" name="skills" id="skills" value="sql">Sql<br>
+            <input type="checkbox" name="skills" id="skills" value="git">Git
+            <input type="checkbox" name="skills" id="skills" value="hibernate">Hibernate<br>
+            <input type="checkbox" name="skills" id="skills" value="spring">Spring Framework
+            <input type="checkbox" name="skills" id="skills" value="junit">Junit<br>
+            <input type="checkbox" name="skills" id="skills" value="maven">Maven
+            <input type="checkbox" name="skills" id="skills" value="springcloud">Spring Cloud<br>
+        </div>
+
+
+        <input type="submit" value="register"/>
+
+    </form>
+
+ </body>
+</html>
