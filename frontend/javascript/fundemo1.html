@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS Functions</title>
+        <script src="sample.js"></script>
+        <script>
+            function sayHello() {
+                return "Hello JavaScript";
+            }
+            function sum(a,b) {
+                return a+b;
+            }
+            function div(a,b) {
+                var c = a/b;
+                document.write("<br>C = "+c);
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Function Demo</h1>
+        <script>  
+            var f1 = sayHello();
+            document.write(f1);
+
+            var result = sum(20,30);
+            document.write("<br>Sum: "+result);
+
+            div(40,20);
+
+            test();
+        </script>
+    </body>
+</html>

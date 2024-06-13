@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Object Demo3</title>
+</head>
+
+<body>
+    <h1>Array Of User Defined Object</h1>
+    <script>
+
+        var myProducts = [
+            {
+                "productId": 1001,
+                "productName": 'IphoneX',
+                "productPrice": 52000
+            },
+            {
+                "productId": 1002,
+                "productName": 'IphoneY',
+                "productPrice": 62000
+            },
+            {
+                "productId": 1003,
+                "productName": 'IphoneZ',
+                "productPrice": 72000
+            }
+        ];
+
+        for (var i = 0; i < myProducts.length; i++) {
+            document.write("<br>ProductId: " + myProducts[i].productId);
+            document.write("<br>Name: " + myProducts[i].productName);
+            document.write("<br>Price: " + myProducts[i].productPrice);
+        }
+    </script>
+</body>
+
+</html>

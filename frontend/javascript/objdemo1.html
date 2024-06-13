@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Object Demo1</title>
+</head>
+
+<body>
+    <h1>Predefined Objects Demo</h1>
+    <script>
+
+        //Date Object
+        var d = new Date();
+        document.write("<br>Today: " + d);
+
+        var dob = new Date("1999-12-31");
+        document.write("<br>DOB: " + dob);
+
+        document.write("<br>Year: " + dob.getFullYear());
+        document.write("<br>Month: " + dob.getMonth());
+        document.write("<br>Date: " + dob.getDate());
+
+        //Math Object
+        var maxNum = Math.max(10, 30);
+        document.write("<br>Max: " + maxNum);
+
+        //string object
+        var name = 'Raj ';
+        var fullName = name.concat("Kumar");
+        document.write("<br>FullName: " + fullName);
+
+        var ch = name.charAt(2);
+        document.write("<br>Char At index 2: " + ch);
+
+    </script>
+</body>
+
+</html>

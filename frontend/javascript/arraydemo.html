@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Array Demo</title>
+    </head>
+    <body>
+        <h1>Arrays</h1>
+        <script>
+            var num = [10,20,30,40,50];  
+            for(var i=0;i<num.length;i++) {
+                document.write(num[i]+"<br>")
+            }               
+            num.push(45);
+            num.push(55);
+            num.push(65);
+            document.write("<br> After Pushing Elements<br>")
+            for(var i=0;i<num.length;i++) {
+                document.write(num[i]+"<br>")
+            }  
+            num.pop();
+            num.pop();            
+            document.write("<br> After Poping Elements<br>")
+            for(var i=0;i<num.length;i++) {
+                document.write(num[i]+"<br>")
+            }  
+        </script>
+    </body>
+</html>
