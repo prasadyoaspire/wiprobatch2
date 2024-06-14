@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dom Demo2</title>
+    <script>
+        function changeStyle() {
+            document.getElementById("para1").style.color = 'red';          
+            document.getElementById("para1").style.fontSize = '50px';
+        }
+        function defaultStyle() {
+            document.getElementById("para1").style.color = 'black';
+            document.getElementById("para1").style.fontSize = '15px';
+        }
+    </script>
+</head>
+
+<body>
+    <p id="para1">This is a sample paragraph one </p>
+    <button onclick="changeStyle()">Change Style</button>
+    <button onclick="defaultStyle()">Defaul Style</button>
+
+</body>
+
+</html>
