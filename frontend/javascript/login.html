@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .errMsg {
+            color: red;
+        }
+    </style>
+    <script>
+        function validate() {
+            var uname = document.myForm.uname.value;
+            var upwd = document.myForm.upwd.value;
+            if (uname == "") {
+                //alert("Username is required");
+                document.getElementById("uname-error").innerHTML = "Username is required";
+                return false;
+            }
+            else if (upwd == "") {
+                // alert("Password is required");
+                document.getElementById("upwd-error").innerHTML = "Password is required";
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form onsubmit="return validate()" name="myForm">
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" name="uname" class="form-control" />
+                <p id="uname-error" class="errMsg"> </p>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="upwd" class="form-control" />
+                <p id="upwd-error" class="errMsg">  </p>
+            </div>
+            <input type="submit" value="login" class="btn btn-primary" />
+        </form>
+    </div>
+</body>
+
+</html>
