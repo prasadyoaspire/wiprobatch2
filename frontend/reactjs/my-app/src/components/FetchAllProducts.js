@@ -1,6 +1,7 @@
 import React from 'react';
 
 import axios from 'axios';
+import DisplayProducts from './DisplayProducts';
 
 class FetchAllProducts extends React.Component {
 
@@ -12,21 +13,14 @@ class FetchAllProducts extends React.Component {
     }
     componentDidMount() {
         axios.get("http://localhost:8081/product/all")
-        .then(resp => this.setState({
-            products: resp.data
-        }))
+            .then(resp => this.setState({
+                products: resp.data
+            }))
     }
 
     render() {
         return (
-            <div>
-                <h3>All Products</h3>
-                {
-                    this.state.products.map(p =>
-                        <div>{p.productId} {p.productName} {p.productPrice} {p.mfd} {p.category}</div>
-                    )
-                }
-            </div>
+          <DisplayProducts products = {this.state.products}/>
         )
     }
 }
