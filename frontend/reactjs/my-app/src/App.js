@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Main from './components/Main';
 import ProductList from './components/ProductList';
+import Counter from './components/Counter';
 
 function App() {
   const title = "My First React App";
@@ -11,8 +12,9 @@ function App() {
     <div className="App">
       <h1>{title}</h1>
       <Header />
-      <Main />
+      {/* <Main /> */}
       {/* <ProductList/> */}
+      <Counter/>
       <Footer />
     </div>
   );

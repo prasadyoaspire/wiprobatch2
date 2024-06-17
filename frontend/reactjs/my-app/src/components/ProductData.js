@@ -1,11 +1,11 @@
-function ProductData(props) {
+function ProductData({myTitle,myProduct}) {
    
     return(
         <div>
-            <h3>{props.myTitle}</h3>
-            <p>Id: {props.myProduct.productId}</p>
-            <p>Name: {props.myProduct.productName}</p>
-            <p>Price: {props.myProduct.productPrice}</p>
+            <h3>{myTitle}</h3>
+            <p>Id: {myProduct.productId}</p>
+            <p>Name: {myProduct.productName}</p>
+            <p>Price: {myProduct.productPrice}</p>
         </div>
     )
 }
