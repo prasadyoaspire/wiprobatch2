@@ -5,10 +5,11 @@ function FetchAllProducts() {
 
     const [products, setProducts] = useState([]);
 
+    //similar to componentDidMount and componentDidUpdate
     useEffect(() => {
         axios.get("http://localhost:8081/product/all")
         .then(resp => setProducts(resp.data))
-    },[])
+    },[]);
 
     return (
         <div>
