@@ -21,8 +21,8 @@ function FetchAllProducts() {
                         <th>ProductId</th>
                         <th>Name</th>
                         <th>Price</th>
-                        <th>MFD</th>
-                        <th>Category</th>
+                        {/* <th>MFD</th>
+                        <th>Category</th> */}
                     </tr>
                 </thead>
                 <tbody>
@@ -32,8 +32,9 @@ function FetchAllProducts() {
                             <td>{p.productId}</td>
                             <td>{p.productName}</td>
                             <td>{p.productPrice}</td>
-                            <td>{p.mfd}</td>
-                            <td>{p.category}</td>
+                            {/* <td>{p.mfd}</td>
+                            <td>{p.category}</td> */}
+                            <Link to={`/product/details/${p.productId}`}>View</Link>
                         </tr>)
                     }
 

@@ -6,6 +6,7 @@ import AddProduct from './components/AddProduct';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
+import FetchProduct from './components/FetchProduct';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/counter' element={<Counter />} />
         <Route path='/product/all' element={<FetchAllProducts />} />
         <Route path='/product/add' element={<AddProduct />} />
+        <Route path='/product/details/:pid' element={<FetchProduct />} />
       </Routes>
     </BrowserRouter>
   );
