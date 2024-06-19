@@ -39,4 +39,24 @@ public class ProductServiceImpl implements ProductService {
 		return productRepository.findAll();
 	}
 
+	@Override
+	public Product updateProduct(Product product) {		
+		Optional<Product> optionalProduct = productRepository.findById(product.getProductId());
+		if(optionalProduct.isEmpty()) {
+			throw new ProductNotFoundException("Product not existing with id: "+product.getProductId());
+		}		
+		Product updatedProduct = productRepository.save(product);
+		return updatedProduct;
+	}
+
+	@Override
+	public void deleteProduct(int productId) {		
+		Optional<Product> optionalProduct = productRepository.findById(productId);
+		if(optionalProduct.isEmpty()) {
+			throw new ProductNotFoundException("Product not existing with id: "+productId);
+		}	
+		Product product = optionalProduct.get();
+		productRepository.delete(product);
+	}
+
 }
