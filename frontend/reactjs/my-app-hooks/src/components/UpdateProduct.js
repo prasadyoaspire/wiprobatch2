@@ -23,7 +23,7 @@ function UpdateProduct() {
                 setPdate(resp.data.mfd);
                 setPcategory(resp.data.category);
             });
-    }, []);
+    }, [id]);
 
     const handleUpdate = ()=> {
         const payload = {

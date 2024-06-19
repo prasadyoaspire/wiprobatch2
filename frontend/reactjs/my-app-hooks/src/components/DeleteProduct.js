@@ -11,7 +11,7 @@ function DeleteProduct() {
     useEffect(() => {
         axios.get("http://localhost:8081/product/" + id)
         .then(resp => setProduct(resp.data));
-    }, []);
+    }, [id]);
 
     const deleteProductHandler = () => {
         axios.delete("http://localhost:8081/product/" + id)

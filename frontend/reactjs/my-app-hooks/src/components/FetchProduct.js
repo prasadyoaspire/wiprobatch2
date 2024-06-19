@@ -11,7 +11,7 @@ function FetchProduct() {
     useEffect(() => {
         axios.get("http://localhost:8081/product/" + pid)
         .then(resp => setProduct(resp.data));
-    }, []);
+    }, [pid]);
 
     return (
         <div>
