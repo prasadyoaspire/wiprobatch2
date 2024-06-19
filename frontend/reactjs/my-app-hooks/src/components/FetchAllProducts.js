@@ -26,7 +26,6 @@ function FetchAllProducts() {
                     </tr>
                 </thead>
                 <tbody>
-
                     {
                         products.map(p => <tr key={p.productId}>
                             <td>{p.productId}</td>
@@ -34,10 +33,11 @@ function FetchAllProducts() {
                             <td>{p.productPrice}</td>
                             {/* <td>{p.mfd}</td>
                             <td>{p.category}</td> */}
-                            <Link to={`/product/details/${p.productId}`}>View</Link>
+                            <td> <Link to={`/product/details/${p.productId}`}>View</Link></td>
+                            <td><Link to={`/product/update/${p.productId}`}>Update</Link></td>
+                            
                         </tr>)
                     }
-
                 </tbody>
             </table>
 

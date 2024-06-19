@@ -9,9 +9,8 @@ function FetchProduct() {
     const {pid} = useParams();
 
     useEffect(() => {
-
-        axios.get("http://localhost:8081/product/" + pid).then(resp => setProduct(resp.data));
-
+        axios.get("http://localhost:8081/product/" + pid)
+        .then(resp => setProduct(resp.data));
     }, []);
 
     return (
