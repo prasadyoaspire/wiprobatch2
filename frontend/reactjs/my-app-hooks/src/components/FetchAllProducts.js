@@ -34,7 +34,8 @@ function FetchAllProducts() {
                             {/* <td>{p.mfd}</td>
                             <td>{p.category}</td> */}
                             <td> <Link to={`/product/details/${p.productId}`}>View</Link></td>
-                            <td><Link to={`/product/update/${p.productId}`}>Update</Link></td>
+                            <td><Link to={`/product/update/${p.productId}`}>Edit</Link></td>
+                            <td><Link to={`/product/delete/${p.productId}`}>Delete</Link></td>
                             
                         </tr>)
                     }
