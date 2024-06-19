@@ -11,7 +11,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path={"/"} element={<Home />} />
         <Route path='/counter' element={<Counter />} />
         <Route path='/product/all' element={<FetchAllProducts />} />
         <Route path='/product/add' element={<AddProduct />} />

@@ -1,22 +1,29 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Counter() {
 
-    const[counter, setCounter] = useState(0);
+    const [counter, setCounter] = useState(0);
 
     const increment = () => {
-        setCounter(counter+1);
+        setCounter(counter + 1);
     }
 
     const decrement = () => {
-        setCounter(counter-1);
+        setCounter(counter - 1);
     }
 
-    return(
+    return (
         <div>
             <h3>Counter : {counter} </h3>
-            <button onClick={increment}>+</button>
-            <button onClick={decrement}>-</button>
+            <div>
+                <button onClick={increment} className='btn btn-success'>+</button>
+                &nbsp;  &nbsp;  &nbsp;
+                <button onClick={decrement} className='btn btn-secondary'>-</button>
+            </div>
+            <div>
+                <Link to='/' className='btn btn-dark'>Back To Home</Link>
+            </div>
         </div>
     )
 }
