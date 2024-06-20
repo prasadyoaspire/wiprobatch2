@@ -13,7 +13,10 @@ function Navbar() {
                         <Link to="/product/all" className="nav-link">All Products</Link>
                     </li>
                     <li className="nav-item">
-                        <Link to="/product/add" className="nav-link">Add New Product</Link>
+                        <Link to="/product/new" className="nav-link">Add New Product</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link to="/login" className="nav-link">Login</Link>
                     </li>
                 </ul>
             </nav>

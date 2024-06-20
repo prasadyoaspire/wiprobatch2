@@ -13,6 +13,9 @@ function AddProduct() {
     const navigate = useNavigate();
 
     const onSubmit = () => {
+
+        //validation 
+        
         const payload = {
             productName: name,
             productPrice: price,
