@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 function AddProduct() {
 
@@ -8,6 +9,8 @@ function AddProduct() {
     const [price, setPrice] = useState('');
     const [mfd, setMfd] = useState('');
     const [category, setCategory] = useState('')
+
+    const navigate = useNavigate();
 
     const onSubmit = () => {
         const payload = {
@@ -17,10 +20,14 @@ function AddProduct() {
             category: category
         }
         axios.post("http://localhost:8081/product/save", payload)
-            .then(resp => alert("New Product Saved!"));
+            .then(resp => {
+                alert("New Product Saved!");
+                navigate("/product/all")
+            });
     }
     return (
         <div>
+            <Navbar/>
             <div className='form-group'>
                 <label>Name</label>
                 <input type="text" name="name" value={name}

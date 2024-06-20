@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 
 function Counter() {
 
@@ -14,7 +15,8 @@ function Counter() {
     }
 
     return (
-        <div>
+        <>
+            <Navbar/>
             <h3>Counter : {counter} </h3>
             <div>
                 <button onClick={increment} className='btn btn-success'>+</button>
@@ -24,7 +26,7 @@ function Counter() {
             <div>
                 <Link to='/' className='btn btn-dark'>Back To Home</Link>
             </div>
-        </div>
+        </>
     )
 }
 

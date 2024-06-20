@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 
 function DeleteProduct() {
 
     const [product, setProduct] = useState(null);
 
+    const navigate = useNavigate();
     const {id} = useParams();
 
     useEffect(() => {
@@ -15,7 +16,11 @@ function DeleteProduct() {
 
     const deleteProductHandler = () => {
         axios.delete("http://localhost:8081/product/" + id)
-        .then(resp=>alert("product deleted"));
+        .then(resp=> {
+            alert("product deleted");
+           // navigate("/product/all");
+            navigate(-1);
+        });
     }
 
     return(

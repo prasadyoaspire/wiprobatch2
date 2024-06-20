@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import Navbar from './Navbar';
 
 function FetchAllProducts() {
 
@@ -13,7 +14,8 @@ function FetchAllProducts() {
     }, []);
 
     return (
-        <div>
+        <>
+        <Navbar/>
             <h3>All Products</h3>
             <table className="table">
                 <thead className="thead-light">
@@ -33,7 +35,7 @@ function FetchAllProducts() {
                             <td>{p.productPrice}</td>
                             {/* <td>{p.mfd}</td>
                             <td>{p.category}</td> */}
-                            <td> <Link to={`/product/details/${p.productId}`}>View</Link></td>
+                            <td><Link to={`/product/details/${p.productId}`}>View</Link></td>
                             <td><Link to={`/product/update/${p.productId}`}>Edit</Link></td>
                             <td><Link to={`/product/delete/${p.productId}`}>Delete</Link></td>
                             
@@ -45,7 +47,7 @@ function FetchAllProducts() {
             <div>
                 <Link to='/' className="btn btn-dark">Back To Home</Link>
             </div>
-        </div>
+        </>
     )
 }
 

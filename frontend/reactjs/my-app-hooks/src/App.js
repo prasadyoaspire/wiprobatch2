@@ -9,14 +9,13 @@ import FetchProduct from './components/FetchProduct';
 import UpdateProduct from './components/UpdateProduct';
 import DeleteProduct from './components/DeleteProduct';
 import GetAllProducts from './components/GetAllProducts';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={"/home"} element={<Home />} />
-        <Route path={"/"} element={<GetAllProducts />} />
-
+        <Route path={"/"} element={<Home />} />      
         <Route path='/counter' element={<Counter />} />
         <Route path='/product/all' element={<FetchAllProducts />} />
         <Route path='/product/add' element={<AddProduct />} />

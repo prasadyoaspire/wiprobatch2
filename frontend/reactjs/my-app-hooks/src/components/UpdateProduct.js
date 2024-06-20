@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 function UpdateProduct() {
@@ -10,8 +10,7 @@ function UpdateProduct() {
     const [pdate, setPdate] = useState('');
     const [pcategory, setPcategory] = useState('');
 
-    // const[product,setProduct] = useState(null);
-
+    const navigate = useNavigate();
     const { id } = useParams();
 
     useEffect(() => {
@@ -25,17 +24,20 @@ function UpdateProduct() {
             });
     }, [id]);
 
-    const handleUpdate = ()=> {
+    const handleUpdate = () => {
         const payload = {
             productId: pid,
             productName: pname,
             productPrice: pprice,
             mfd: pdate,
             category: pcategory
-          }
+        }
 
-          axios.put("http://localhost:8081/product/update",payload)
-          .then(resp=> alert("Product with id :"+resp.data.productId+ " is updated"));
+        axios.put("http://localhost:8081/product/update", payload)
+            .then(resp => {
+                alert("Product with id :" + resp.data.productId + " is updated");
+                navigate("/product/all");
+            });
     }
 
     return (
@@ -43,7 +45,7 @@ function UpdateProduct() {
             <h3>Update Product</h3>
             <div>
                 <label>ProductId</label>
-                <input type='text' name='pid' value={pid} disabled/>
+                <input type='text' name='pid' value={pid} disabled />
             </div>
             <div>
                 <label>ProductName</label>
