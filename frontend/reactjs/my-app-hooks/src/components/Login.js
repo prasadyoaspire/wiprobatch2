@@ -1,39 +1,39 @@
-import { Formik } from 'formik';
+import { Formik, ErrorMessage, Form, Field } from 'formik';
 
 function Login() {
     return (
         <>
             <Formik
                 initialValues={{ email: '', pwd: '' }}
+                validate={values => {
+                    const errors = {};
+                    if (!values.email) {
+                        errors.email = 'Email Required';
+                    } else if (
+                        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+                    ) {
+                        errors.email = 'Invalid email address';
+                    }
+                    if(!values.pwd) {
+                       errors.pwd = 'Password Required' ;
+                    }
+                    return errors;
+                }}
+
                 onSubmit={(values) => {
                     alert(JSON.stringify(values, null, 2));
+                    //alert(JSON.stringify(values));
                 }}
             >
-
-                {({
-                    values,                  
-                    handleChange,
-                    handleBlur,
-                    handleSubmit                                 
-                }) => <form onSubmit={handleSubmit}>
-                        <input
-                            type="email"
-                            name="email"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.email}
-                        />
-                        <input
-                            type="password"
-                            name="pwd"
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            value={values.pwd}
-                        />
-                        <button type="submit" className="btn btn-primary">
+                {({isSubmitting}) => <Form>
+                        <Field type="email" name="email" />
+                        <ErrorMessage name="email" component="div" />
+                        <Field type="password" name="pwd" />
+                        <ErrorMessage name="pwd" component="div" />
+                        <button type="submit" disabled={isSubmitting}>
                             Submit
                         </button>
-                    </form>
+                    </Form>
                 }
             </Formik>
         </>
