@@ -4,11 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import {createStore} from 'redux';
+import {applyMiddleware, createStore} from 'redux';
+import {thunk} from 'redux-thunk'
 import rootReducer from './store/reducers/rootReducer';
 
 const configStore = createStore(
-  rootReducer
+  rootReducer,
+  applyMiddleware(thunk)
 );
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
