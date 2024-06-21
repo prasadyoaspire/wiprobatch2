@@ -3,17 +3,23 @@ const initialState = {
 }
 export function counterReducer(state = initialState, action) {
 
-    if(action.type == 'IncrementByOne') {
+    if(action.type == 'INCREMENT') {
         return {
             ...state,
             counterValue : state.counterValue+1
         }
     }
-    if(action.type == 'DecrementByOne') {
+    if(action.type == 'DECREMENT') {
         return {
             ...state,
             counterValue : state.counterValue-1
         }
     }
-    return state    
+    if(action.type == 'INCREMENT_BY_VALUE') {
+        return {
+            ...state,
+            counterValue : state.counterValue + action.payload
+        }
+    }
+    return state; 
 }
