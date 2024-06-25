@@ -1,0 +1,46 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "productName": "IPhoneX",
+      "productPrice": 76000,
+      "mfd": "2022-05-29",
+      "category": "Mobile"
+    },
+    {
+      "id": "2",
+      "productName": "Lenovo Thinkpad 15",
+      "productPrice": 130000,
+      "mfd": "2023-05-29",
+      "category": "Laptop"
+    },
+    {
+      "id": "3",
+      "productName": "Samsung Ultra Cool",
+      "productPrice": 60000,
+      "mfd": "2024-05-29",
+      "category": "refridgrator"
+    },
+    {
+      "id": "4",
+      "productName": "Dell Vestro",
+      "productPrice": 95000,
+      "mfd": "2024-05-30",
+      "category": "Laptop"
+    },
+    {
+      "id": "5",
+      "productName": "Dell Inspiron",
+      "productPrice": 45000,
+      "mfd": "2024-01-30",
+      "category": "Laptop"
+    },
+    {
+      "id": "111",
+      "productName": "NewLaptop",
+      "productPrice": 235000,
+      "mfd": "2024-06-25",
+      "category": "Laptop"
+    }
+  ]
+}
