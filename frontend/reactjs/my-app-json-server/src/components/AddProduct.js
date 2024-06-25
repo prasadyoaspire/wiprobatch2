@@ -1,6 +1,8 @@
+import { useEffect, useState } from "react";
 import { Form, Formik,Field,ErrorMessage } from 'formik';
 import axios from 'axios';
 import * as Yup from "yup";
+import { useParams } from "react-router-dom";
 
 function AddProduct() {
 
@@ -34,7 +36,7 @@ function AddProduct() {
                 }}
                 >
 
-                { ({isSubmitting}) => <Form>
+                { ({isSubmitting, isValid, dirty}) => <Form>
                     <div>
                         <label>Id</label>
                         <Field type='text' name="id"/>
@@ -60,7 +62,7 @@ function AddProduct() {
                         <Field type='text' name="category"/>
                         <ErrorMessage name="category" component="div" />
                     </div>
-                    <button type='submit'>Save</button>
+                    <button type='submit' disabled={!(dirty && isValid)}>Save</button>
                 </Form>
                 }
             </Formik>

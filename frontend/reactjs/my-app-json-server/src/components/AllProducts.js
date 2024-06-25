@@ -1,10 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Form, Formik, Field, ErrorMessage } from 'formik';
 import axios from 'axios';
+import AddProduct from './AddProduct';
+import EditProduct from './EditProduct';
 
 function AllProducts() {
     const [products, setProducts] = useState([]);
 
+    const [isEdit, setIsEdit] = useState(false);
+    const [pid, setPid] = useState('');
+   
     // useEffect(() => {
     //     axios.get("http://localhost:8000/products").then(resp => setProducts(resp.data));
     // }, [])
@@ -14,8 +19,16 @@ function AllProducts() {
             .then(resp => alert("Product Deleted"));
     }
 
+    const handleEdit = (id) => {
+        setIsEdit(true);
+        setPid(id);
+    }
+
     return (
         <div>
+            {
+                !isEdit ? <AddProduct/> : <EditProduct pid = {pid}/>
+            }           
             <h3>All Products</h3>
             {
                 // products.map(p => <div>
@@ -49,7 +62,7 @@ function AllProducts() {
                 products.length > 0 &&
                 products.map(p => <div>
                     <p>{p.id} {p.productName} {p.productPrice} {p.mfd} {p.category} 
-                        <button>Edit</button> 
+                        <button onClick={()=>handleEdit(p.id)}>Edit</button> 
                         <button onClick={()=>handleDelete(p.id)}>Delete</button>
                     </p>
                 </div>)
